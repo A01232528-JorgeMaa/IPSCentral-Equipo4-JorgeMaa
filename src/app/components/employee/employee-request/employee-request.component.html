@@ -1,0 +1,93 @@
+<body *ngIf="loadingScreen"> 
+    <div class="container">
+        <div class="center">
+            <div class="loader"></div>
+        </div>
+        
+    </div>
+</body>
+
+<body *ngIf="allowEditing">
+    <section class="paddingSidebar">
+        <div class="title-selection">
+            <h1>Editar evaluación de {{profile?.givenName}} {{profile?.surname}}</h1>
+        </div>
+        <section class="hr-users">
+    
+    
+            <div id="hr-title">
+                <div>
+                    <h2 class="subtitle">Mi Evaluación360</h2>
+                </div>
+                <div class="button-section">
+                    <div class="add-user-button-center" routerLink="/home/employee_home">
+                        <figure class=".add-icon">
+                            <img src="http://localhost:4200/assets/icons/backButton.png" alt="icono agregar usuario">
+                        </figure>
+                        <a class="add-user">Regresar</a>
+                    </div>
+        
+                    <div class="add-user-button-center" (click)="postEmployeeChanges()">
+                        <figure class=".add-icon">
+                            <img src="http://localhost:4200/assets/icons/saveButton.png" alt="icono agregar usuario">
+                        </figure>
+                        <a class="add-user">Guardar Cambios</a>
+                    </div>
+                </div>
+            </div>
+    
+                
+            <table class="rh-table">
+                <tr>
+                    <th>ID</th>
+                    <th>Usuario</th>
+                    <th>Como evalúo</th>
+                    <th>Horas Totales</th>
+                    <th>Acción</th>
+                    <th>Motivo</th>
+                </tr>
+                <!-- Cicla por toda la informacion de displayTeam Es un Array en base a la interface DbUserTeam360 del codigo typescript -->
+                <tr *ngFor="let team of displayTeam">
+                    <!-- Por cada objeto que se obtiene las caracteristias a desplegar -->
+                    <th>{{team.PartnerID}}</th>
+                    <th>{{team.Partner}}</th>
+
+                    <!-- Si es 0 -> Es evaluacion PEER, Si es 1 -> Es evaluacion TEAM, Si es 2 -> Es evaluacion LEADER -->
+                    <th *ngIf="team.EvalType == 0">Peer</th>
+                    <th *ngIf="team.EvalType == 1">Team</th>
+                    <th *ngIf="team.EvalType == 2">Leader</th>
+
+                    <!-- Despliega horas-->
+                    <th>{{team.Hours}}</th>
+
+                    <!-- Columna para las CHECKBOXES -->
+                    <th>
+                        <!-- Input CHECKBOX, Se para el team.Check1 para determinar en que posicion esta el CHECKBOX -->
+                        <!-- El CHANGE ayuda a invertir el valor para que se actualize el objeto displayTeam -->
+                        <label *ngIf="!team.Approved" class="switch">
+                            <input type="checkbox" value="{{team.Check1}}" [checked]="team.Check1" (change)="team.Check1 = !team.Check1">
+                            <span class="slider"></span>
+                        </label>
+
+                        <!-- En base al team.Check1, determina si despliega Conservar o Remover -->
+                        <div *ngIf="!team.Approved">
+                            <h3 *ngIf="team.Check1 == true">Conservar</h3>
+                            <h3 *ngIf="team.Check1 == false">Remover</h3>
+                        </div>
+                        
+                    </th>
+
+                    <!-- En base al team.Check1, determina si habilita o deshabilita la informacion -->
+                    <th *ngIf="!team.Check1">
+                        <textarea *ngIf="!team.Approved" style="padding: 2%;" class="enabledTextbox" placeholder="Motivo" [(ngModel)]="team.Reason"></textarea>
+
+                    </th>
+                    <th *ngIf="team.Check1">
+                        <textarea class="disabledTextbox" disabled ></textarea>
+                    </th>
+                </tr>
+            </table>
+        </section>
+    </section>
+</body>
+<router-outlet></router-outlet>

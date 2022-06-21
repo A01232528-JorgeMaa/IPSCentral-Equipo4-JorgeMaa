@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div class="main">
+        <p id="title" style="text-align:left;">Verificador de Evaluaciones 360</p>
+        <div class="container">
+            <div class="finder">
+                <div class="searchbar">
+                    <fieldset>
+                        <form class="searchform" method="post">
+                            <input (keyup)="sortUserList(1,searchQuery)" class="searcharea" type="text" placeholder="Buscar Usuario" [(ngModel)]="searchQuery" [ngModelOptions]="{standalone: true}">
+                            <input type="submit" value="Reset" class="submitbutton" (click)="queryUsers(); searchQuery=''"/>
+
+                            <ul class="filters">
+                                <li *ngIf="!alphabeticSort" class="letter-up-filter" title="Alfabeto Ascendente" data-searchType="web" (click)="sortUserList(2, '')">A</li>
+                                <li *ngIf="alphabeticSort" class="letter-down-filter" title="Alfabeto Descendete" data-searchType="web" (click)="sortUserList(3, '')">Z</li>
+                                <li *ngIf="!approvedSort" class="approved" title="Aprobados" data-searchType="web" (click)="sortUserList(4, '')">Ap</li>
+                                <li *ngIf="approvedSort" class="not-approved" title="No Aprobados" data-searchType="web" (click)="sortUserList(4, '')">NAp</li>
+                                <li *ngIf="orphanSort" class="orphans" title="Huerfanos" data-searchType="web" (click)="sortUserList(5, '')">H</li>
+                                <li *ngIf="!orphanSort" class="with-team" title="No Huerfanos" data-searchType="web" (click)="sortUserList(5, '')">A</li>
+                            </ul>
+                        </form>
+                    </fieldset>
+                </div>
+
+                <!-- <img src="/assets/uploadAssets/browse-icon.svg" title="Filtros" width="25px"> -->
+                <div class="searchresults">
+                    <div *ngIf="userList != null">
+
+                        <table class="styled-table" id="employees" style="box-shadow: none; border-spacing: 0px;">
+                            <tbody>
+                                <tr *ngFor="let user of displayUserList">
+                                    <td (click)="getTeam(user.email ?? ''); currentUser = user.name ?? ''" style="cursor:pointer ;text-align: start; width: 85%;" title="{{user.name}}">{{user.name}}</td>
+                                    <span class="circle{{user.Status}}"></span>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    
+                </div>
+            </div>
+
+            <div class="messageTeam" *ngIf="userTeam?.length == 0">
+                <h1 class="boldTextMessageTeam">El equipo de {{currentUser}} no tiene usuarios.</h1>
+            </div>
+            
+            <div class="messageTeam" *ngIf="userTeam == null && userTeamNotApproved == null">
+                <h1 class="boldTextMessageTeam">Seleccione un equipo para empezar</h1>
+            </div>
+
+            <div class="display" *ngIf="userTeam?.length ?? 0 > 0">
+                <table class="styled-table">
+                    <caption title="{{currentUser}}">Equipo 360 de {{currentUser}}</caption>
+                    <thead>
+                        <tr class="styled-rows">
+                            <th>ID</th>
+                            <th>Nombre</th>
+                            <th>Evaluación</th>
+                            <th>Horas</th>
+                            <th>Estado</th>
+                            <th>Acción</th>
+                        </tr>
+                    </thead>
+                    <!-- 550 -->
+                    <tbody>
+                      <ng-container *ngFor="let user of userTeam">
+                        <tr *ngIf="(user.Approved == null || user.Approved == true) && user.warning == 3" class="styled-rows">
+                          <th>{{user.PartnerID}}</th> 
+                          <th>{{user.Partner}}</th>  
+                          <th *ngIf="user.EvalType == 0">Peer</th>
+                          <th *ngIf="user.EvalType == 1">Team</th>
+                          <th *ngIf="user.EvalType == 2">Leader</th>
+                          <th>{{user.Hours}}</th>  
+                          <th>
+                            <div (click)="checkConflict(user)" class="tooltip" *ngIf="user.Hours < 40" style="cursor: pointer; display:flex; flex-direction: row; justify-content: center; align-items: center">
+                              <figure style="width: auto; height: 25px; margin: 15px;">
+                                <img *ngIf="!clockIconStatus(user.Notification ?? [])" src="http://localhost:4200/assets/icons/warningIconHours.png" alt="icono agregar usuario" class="warningIcon">
+                                <img *ngIf="clockIconStatus(user.Notification ?? [])" src="http://localhost:4200/assets/icons/warningIconHoursSolved.png" alt="icono agregar usuario" class="warningIcon">
+                              </figure>
+                              <img *ngIf="checkMessage(user.Notification ?? [])" src="http://localhost:4200/assets/icons/messageIcon.png" alt="icono agregar usuario" style="width: auto; height: 25px; margin: 5px;">
+                              <!-- <span class="tooltiptext">No cumple con las 40 horas.</span> -->
+                            </div>
+                            
+                            <div (click)="checkConflict(user)" class="tooltip" *ngIf="user.Hours >= 40" style="cursor: pointer; display:flex; flex-direction: row; justify-content: center; align-items: center">
+                              <figure style="width: auto; height: 25px; margin: 15px;">
+                                <img *ngIf="!clockIconStatus(user.Notification ?? [])" src="http://localhost:4200/assets/icons/warningIconHours.png" alt="icono agregar usuario" class="warningIcon">
+                                <img *ngIf="clockIconStatus(user.Notification ?? [])" src="http://localhost:4200/assets/icons/warningIconHours.png" alt="icono agregar usuario" class="warningIcon">
+                              </figure>
+                              <img *ngIf="checkMessage(user.Notification ?? [])" src="http://localhost:4200/assets/icons/messageIcon.png" alt="icono agregar usuario" style="width: auto; height: 25px; margin: 5px;">
+                              <!-- <span class="tooltiptext">Participo en varios proyectos que no cumplen 40 horas con {{user.TeamOwner}} y llega a acumular mas de 40 horas.</span> -->
+                            </div>
+
+                            
+                        </th>
+                          <th style="text-align: center; margin-top: auto;">
+                            <label class="switch">
+                              <input type="checkbox" value="{{user.HrDecision}}" [checked]="user.HrDecision" (change)="notificationModule(user, 1, true)">
+                              <span class="slider"></span>
+                            </label>
+                              <h3 *ngIf="user.HrDecision == true">Conservar</h3>
+                              <h3 *ngIf="user.HrDecision == false">Remover</h3>
+                          </th>  
+                        </tr>
+                      </ng-container>
+
+
+                      <ng-container *ngFor="let user of userTeam">
+                        <tr *ngIf="(user.Approved == null || user.Approved == true) && user.warning == 2" class="styled-rows">
+                          <th>{{user.PartnerID}}</th> 
+                          <th>{{user.Partner}}</th>  
+                          <th *ngIf="user.EvalType == 0">Peer</th>
+                          <th *ngIf="user.EvalType == 1">Team</th>
+                          <th *ngIf="user.EvalType == 2">Leader</th>
+                          <th>{{user.Hours}}</th>  
+                          <th>
+
+
+
+                            <figure style="cursor: pointer; display:flex; flex-direction: row; justify-content: center; align-items: center" (click)="checkConflict(user)">
+                              <img *ngIf="!user.conflictStatus" src="http://localhost:4200/assets/icons/conflictIcon.png" alt="icono agregar usuario" style="width: auto; height: 25px; margin: 5px;">
+                              <img *ngIf="user.conflictStatus" src="http://localhost:4200/assets/icons/conflictSolvedIcon.png" alt="icono agregar usuario" style="width: auto; height: 25px; margin: 5px;">
+                              <img *ngIf="checkMessage(user.Notification ?? [])" src="http://localhost:4200/assets/icons/messageIcon.png" alt="icono agregar usuario" style="width: auto; height: 25px; margin: 5px;">
+                            </figure>
+
+                              
+                          </th>
+
+                          <th style="text-align: center; margin-top: auto;">
+                            <label class="switch">
+                              <input type="checkbox" value="{{user.HrDecision}}" [checked]="user.HrDecision" (change)="notificationModule(user, 1, true)">
+                              <span class="slider"></span>
+                            </label>
+
+                              <h3 *ngIf="user.HrDecision == true">Conservar</h3>
+                              <h3 *ngIf="user.HrDecision == false">Remover</h3>
+                          </th>  
+                        </tr>
+                      </ng-container>
+
+                      <ng-container *ngFor="let user of userTeam">
+                        <tr *ngIf="(user.Approved == null || user.Approved == true) && user.warning == 1" class="styled-rows">
+                          <th>{{user.PartnerID}}</th> 
+                          <th>{{user.Partner}}</th>  
+                          <th *ngIf="user.EvalType == 0">Peer</th>
+                          <th *ngIf="user.EvalType == 1">Team</th>
+                          <th *ngIf="user.EvalType == 2">Leader</th>
+                          <th>{{user.Hours}}</th>  
+                          <th>
+                              <figure style="cursor: pointer; display:flex; flex-direction: row; justify-content: center; align-items: center" *ngIf="user.Notification?.length ?? 0 > 0" (click)="checkConflict(user)">
+                                  <img *ngIf="!user.HrDecision" src="http://localhost:4200/assets/icons/removeIconHr.png" alt="icono agregar usuario" style="width: auto; height: 25px; margin: 5px;">
+                                  <img *ngIf="user.HrDecision"src="http://localhost:4200/assets/icons/confirmButton.png" alt="icono agregar usuario" style="width: auto; height: 25px; margin: 5px;">
+                                  <img *ngIf="checkMessage(user.Notification ?? [])" src="http://localhost:4200/assets/icons/messageIcon.png" alt="icono agregar usuario" style="width: auto; height: 25px; margin: 5px;">
+                              </figure>
+
+                              <figure style="display:flex; flex-direction: row; justify-content: center; align-items: center" *ngIf="user.Notification?.length == 0">
+                                <img src="http://localhost:4200/assets/icons/pendingIcon.png" alt="icono agregar usuario" style="width: auto; height: 25px; margin: 5px;">
+                            </figure>
+                          </th>  
+                          <th style="text-align: center; margin-top: auto;">
+                            <label class="switch">
+                              <input type="checkbox" value="{{user.HrDecision}}" [checked]="user.HrDecision" (change)="notificationModule(user, 2, true)">
+                              <span class="slider"></span>
+                            </label>
+
+                              <h3 *ngIf="user.HrDecision == true">Conservar</h3>
+                              <h3 *ngIf="user.HrDecision == false">Remover</h3>
+                          </th>  
+                        </tr>
+                      </ng-container>
+
+
+                      <ng-container *ngFor="let user of userTeam">
+                        <tr *ngIf="user.Approved && user.warning == 0" class="styled-rows">
+                          <th>{{user.PartnerID}}</th> 
+                          <th>{{user.Partner}}</th>  
+                          <th *ngIf="user.EvalType == 0">Peer</th>
+                          <th *ngIf="user.EvalType == 1">Team</th>
+                          <th *ngIf="user.EvalType == 2">Leader</th>
+                          <th>{{user.Hours}}</th>  
+                          <th>
+                              <figure *ngIf="user.Notification?.length == 0" style="display:flex; flex-direction: row; justify-content: center; align-items: center">
+                                  <img src="http://localhost:4200/assets/icons/confirmButton.png" alt="icono agregar usuario" style="width: auto; height: 25px; margin: 5px;">
+                              </figure>
+
+                              <figure *ngIf="user.Notification?.length != 0" (click)="checkConflict(user)" style="cursor: pointer; display:flex; flex-direction: row; justify-content: center; align-items: center">
+                                <img *ngIf="user.HrDecision" src="http://localhost:4200/assets/icons/confirmButton.png" alt="icono agregar usuario" style="width: auto; height: 25px; margin: 5px;">
+                                <img *ngIf="!user.HrDecision" src="http://localhost:4200/assets/icons/removeIconHr.png" alt="icono agregar usuario" style="width: auto; height: 25px; margin: 5px;">
+                                <img *ngIf="checkMessage(user.Notification ?? [])" src="http://localhost:4200/assets/icons/messageIcon.png" alt="icono agregar usuario" style="width: auto; height: 25px; margin: 5px;">
+                            </figure>
+                          </th>  
+                          <th style="text-align: center; margin-top: auto;">
+                            <label class="switch">
+                              <input type="checkbox" value="{{user.HrDecision}}" [checked]="user.HrDecision" (change)="notificationModule(user, 1, true)">
+                              <span class="slider"></span>
+                            </label>
+
+                              <h3 *ngIf="user.HrDecision == true">Conservar</h3>
+                              <h3 *ngIf="user.HrDecision == false">Remover</h3>
+                          </th>  
+                        </tr>
+                      </ng-container>
+                    </tbody>
+                </table>
+                <div class="buttons">
+                    <button class="button-confirm" (click)="confirmTeam()">Confirmar</button>
+                </div>
+                <table class="styled-table">
+                    <thead>
+                        <tr class="styled-rows">
+                            <th>ID</th>
+                            <th>Nombre</th>
+                            <th>Evaluación</th>
+                            <th>Horas</th>
+                            <th>Acción</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                      <ng-container *ngFor="let user of userTeam">
+                        <tr *ngIf="user.Approved == false" class="styled-rows">
+                          <th>{{user.PartnerID}}</th> 
+                          <th>{{user.Partner}}</th>  
+                          <th *ngIf="user.EvalType == 0">Peer</th>
+                          <th *ngIf="user.EvalType == 1">Team</th>
+                          <th *ngIf="user.EvalType == 2">Leader</th>
+                          <th>{{user.Hours}}</th>  
+                          <th style="text-align: center;">
+                            <figure class="addIconFigure" (click)="notificationModule(user, 2, true)" >
+                              <img src="http://localhost:4200/assets/icons/addUserIcon.png" alt="icono agregar usuario" class="addIcon">
+                          </figure>
+                            <!-- <figure class="addIconFigure" (click)="user.Approved = true; user.OwnerCheck = true; user.PartnerCheck = true; user.HrDecision = true" >
+                              <img src="http://localhost:4200/assets/icons/addUserIcon.png" alt="icono agregar usuario" class="addIcon">
+                          </figure> -->
+                          </th>  
+                        </tr>
+                      </ng-container>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

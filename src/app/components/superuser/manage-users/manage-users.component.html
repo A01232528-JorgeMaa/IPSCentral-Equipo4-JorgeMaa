@@ -1,0 +1,65 @@
+<section class="main-section">
+    <div class="title-section">
+        <h1>Administrar usuarios</h1>
+    </div>
+    <section class="hr-users">
+        <div id="hr-title">
+            <div>
+                <h2 class="subtitle">Recursos humanos</h2>
+            </div>
+            <div class="add-user-button" (click)="openDialog()">
+                <figure class=".add-icon">
+                    <img src="https://cdn.onlinewebfonts.com/svg/img_529925.png" alt="icono agregar usuario">
+                </figure>
+                <a class="add-user">Nuevo usuario</a>
+            </div>
+            <div (click)="updateData()" class="save-button">
+                <a>Guardar</a>
+            </div>
+        </div>
+        <table class="rh-table">
+            <tr>
+                <th>ID</th>
+                <th style="text-align: left;">Nombre</th>
+                <th style="text-align: left;">Correo</th>
+                <th>Especialista RH</th>
+            </tr>
+            <tr *ngFor="let user of users">
+                <td *ngIf="user.userType">{{user.id}}</td>
+                <td *ngIf="user.userType" style="text-align: left;">{{user.name}}</td>
+                <td *ngIf="user.userType" style="text-align: left;">{{user.email}}</td>
+                <td *ngIf="user.userType">
+                    <label class="switch">
+                        <input type="checkbox" value="{{user.SU_decision}}" [checked]="user.SU_decision"
+                            (change)="user.SU_decision = !user.SU_decision">
+                        <span class="slider"></span>
+                    </label>
+                </td>
+            </tr>
+        </table>
+    </section>
+
+    <section class="employee-users">
+        <h2 class="subtitle">Empleados</h2>
+        <table class="employee-table">
+            <tr>
+                <th>ID</th>
+                <th style="text-align: left;">Nombre</th>
+                <th style="text-align: left;">Correo</th>
+                <th>Especialista RH</th>
+            </tr>
+            <tr *ngFor="let user of users">
+                <td *ngIf="!user.userType">{{user.id}}</td>
+                <td *ngIf="!user.userType" style="text-align: left;">{{user.name}}</td>
+                <td *ngIf="!user.userType" style="text-align: left;">{{user.email}}</td>
+                <td *ngIf="!user.userType">
+                    <label class="switch">
+                        <input type="checkbox" value="{{user.SU_decision}}" [checked]="user.SU_decision"
+                            (change)="user.SU_decision = !user.SU_decision">
+                        <span class="slider"></span>
+                    </label>
+                </td>
+            </tr>
+        </table>
+    </section>
+</section>

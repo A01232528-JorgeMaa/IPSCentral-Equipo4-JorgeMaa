@@ -1,0 +1,62 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+main {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.pop-up {
+    width: 400px;
+    height: fit-content;
+    border: 1px solid #d7d7d7;
+    border-radius: 5px;
+    background: white;
+    padding: 24px;
+    position: absolute;
+}
+
+.pop-up .message {
+    width: 100%;
+    height: fit-content;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+.pop-up .message p{
+    font-size: 1.5rem;
+    color: #282c38;
+    text-decoration: none;
+    text-align: center;
+}
+
+.pop-up .message .buttons {
+    width: 50%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    margin-top: 24px;
+}
+
+.pop-up .message .buttons button {
+    width: 50px;
+    height: 40px;
+    background-color: #e65624;
+    color: #d7d7d7;
+    font-weight: bold;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: all 0.2s ease-in-out;
+}
+
+.pop-up .message .buttons button:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 4px 17px rgba(0, 0, 0, 0.35);
+}

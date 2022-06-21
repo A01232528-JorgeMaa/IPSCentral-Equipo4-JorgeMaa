@@ -1,0 +1,38 @@
+<main>
+    <div class="pop-up">
+        <div class="message">
+            
+
+            <div *ngIf="displayRequest.length > 0">
+                <p>Se realizaran las siguientes peticiones:</p>
+                <div class="tableRequest">
+                    <table class="rh-table">
+                        <tr>
+                            <th style="width: 5%;">ID</th>
+                            <th style="width: 30%; text-align: left;">Nombre</th>
+                            <th style="width: 10%;">Como evaluó</th>
+                            <th style="width: 55%;">Motivo</th>
+                        </tr>
+                        <tr *ngFor="let request of displayRequest">
+                            <th style="width: 5%;">{{request.PartnerID}}</th>
+                            <th style="width: 30%; text-align: left;">{{request.Partner}}</th>
+                            <th style="width: 10%;" *ngIf="request.EvalType == 0">Peer</th>
+                            <th style="width: 10%;" *ngIf="request.EvalType == 1">Team</th>
+                            <th style="width: 10%;" *ngIf="request.EvalType == 2">Leader</th>
+                            <th style="width: 55%; text-align: left;">{{request.Reason}}</th>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+
+            <p style="margin: auto;">¿Estás seguro de que quieres confirmar tu equipo?</p>
+            <p>Una vez confirmado, ya no podras realizar más cambios.</p>
+
+            <mat-dialog-actions class="buttons">
+                <button class="button-deny" (click)="close()">No, regresar</button>
+                <button class="button-confirm" (click)="save()">Confirmar</button>
+            </mat-dialog-actions>
+            
+        </div>
+    </div>
+</main>

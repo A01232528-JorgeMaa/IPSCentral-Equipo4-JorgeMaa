@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+  <body *ngIf="!displayPage">
+    <div class="container">
+      <div class="center">
+          <div class="loader"></div>
+        </div>
+    </div>
+  </body>
+
+  <body *ngIf="(fileProcessProgress > 0 && fileProcessProgress < 6) && displayPage">
+    <div class="container">
+      <div class="center">
+          <div class="loader"></div>
+        </div>
+        <h1>{{displayText[fileProcessProgress]}}</h1>
+    </div>
+  </body>
+
+  <body *ngIf="(fileProcessProgress == 6 || status) && displayPage">
+    <div class="container">
+      <div class="center">
+      </div>
+      <section>
+        <h1 style="text-align: center;">Archivo cargado exitosamente</h1>
+        <button class="action-button  green" (click)="visualizeTeams()">Visualizar equipos</button>
+        <button class="action-button red" *ngIf="!status" (click)="deleteDatabase()">Eliminar información</button>
+        <button class="action-button  green" *ngIf="status" (click)="viewDashboard()">Ver Dashboard</button>
+      </section>
+    </div>
+  </body>
+
+
+  <body *ngIf="fileProcessProgress == 0 && displayPage">
+    <main class="container">
+        <!-- Seccion del titulo -->
+        <section id="title">
+            <h1>Carga de archivo</h1>
+        </section>
+
+        <!-- Seccion para subir archivos -->
+        <section class="dragdrop">
+            <p>Carga el archivo con extension .csv</p>
+
+            <figure>
+                <img src="http://localhost:4200/assets/uploadAssets/upload-icon.png" alt="Upload Excel File" title="Upload Icon">
+            </figure>
+
+            <h3>Arrastra el archivo o haz click en el cuadro</h3>
+            <!-- <input type="file" class="file" accept=".xlsx, .csv" (change)="getFile($event)" #fileDropRef> -->
+            <input type="file" #fileDropRef class="file" id="csvFileUpload" (change)="fileChangeListener($event)" accept=".csv" />
+        </section>
+
+        <!-- Seccion para mostrar informacion del archivo -->
+        <section class="file-display">
+            <img src="http://localhost:4200/assets/uploadAssets/file-icon.svg" alt="File" width="45px">
+
+            <div class="info" *ngIf="!csvRecords">
+                <h4 class="file-name">No se ha subido ningún archivo</h4>
+                <p class="file-size">0 KB</p>
+            </div>
+
+            <div class="info" *ngIf="csvRecords">
+              <h4 class="file-name">{{csvRecords.name}}</h4>
+              <p class="file-size">{{formatSize(csvRecords.size)}}</p>
+              <app-progress-bar [progress]="csvRecords?.progress"></app-progress-bar>
+              <p>{{csvRecords.progress}}</p>
+            </div>
+
+            <div class="Browse" *ngIf="csvRecords">
+              <img src="http://localhost:4200/assets/uploadAssets/delete-icon.svg" alt="Borrar Archivo" width="40px" (click)="csvRecords = undefined" title="Borrar archivo">
+            </div>
+
+        </section>
+
+        <!-- Seccion de botones -->
+        <section class="actions" *ngIf="csvRecords && csvRecords.progress === 100">
+            <button id="go" (click)="uploadData()">Aceptar</button>
+
+            <!-- <button id="go">Aceptar</button> -->
+        </section>
+
+    </main>
+        <!-- <div id="dropzone" appDnd (fileDropped)="onFileDropped($event)"> -->
+          <!-- <input type="file" #fileDropRef id="fileDropRef" accept=".xlsx" (change)="fileBrowserHandler($event.target)"> -->
+  </body>
+
+
+</html>

@@ -1,0 +1,351 @@
+:root {
+    --gray: #d7d7d7;
+    --blue: #46647c;
+    --black: #333;
+    --orange: #e65624;
+    --deep-blue: #282c38;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    font-size: 62.5%;
+}
+
+.main-section {
+    width: 100%;
+    height: fit-content;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.main-section .title-section {
+    width: 70%;
+    display: flex;
+    align-items: center;
+    justify-content: left;
+}
+
+.main-section .title-section h1{
+    font-size: 3rem;
+    margin-bottom: 2.4rem;
+    align-self: left;
+}
+
+#hr-title {
+    width: 100%;
+    display: grid;
+    grid-template-areas: 'left right';
+    grid-template-columns: 35% 1fr;
+    margin-bottom: 1.2rem;
+    align-items: baseline;
+}
+
+#hr-title .button-section {
+    display: flex;
+    justify-content: flex-end;
+}
+
+#hr-title .add-user-button-center {
+    background: #dfe5eb ;
+    border: 1px solid #d7d7d7;
+    width: fit-content;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 5px;
+    cursor: pointer;
+    grid-area: center;
+    margin-right: 10px;
+}
+
+
+#hr-title .add-user-button-right {
+    background: #dfe5eb ;
+    border: 1px solid #d7d7d7;
+    width: fit-content;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 5px;
+    cursor: pointer;
+    grid-area: right;
+}
+
+#hr-title .add-user-button-center:hover {
+    box-shadow: 0 1px 5px 0 #5f6367;
+}
+
+#hr-title .add-user-button-right:hover {
+    box-shadow: 0 1px 5px 0 #5f6367;
+}
+
+#hr-title .add-user-button-center figure {
+    width: 40px;
+    height: 40px;   
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-right: 5px;
+}
+
+
+
+#hr-title .add-user-button-center figure img {
+    width: 2rem;
+    object-fit: cover;
+}
+
+#hr-title .add-user-button-center .add-user{
+    color: #333;
+    text-decoration: none;
+}
+
+#hr-title .add-user-button-right .add-user{
+    color: #333;
+    text-decoration: none;
+}
+
+.hr-users {
+    width: 98%;
+}
+
+.rh-table {
+    width: 100%;
+    border: 1px solid #dfe5eb;
+    border-collapse: collapse;
+    margin-bottom: 2.4rem;
+}
+
+.rh-table tr:nth-child(1) {
+    background-color: #eff2f7;
+}
+
+.rh-table tr:nth-child(even){
+    background-color: #f9fafc;
+}
+
+.rh-table tr th{
+    padding: 1.5rem;
+    text-align: center;
+    border-bottom: 1px solid #dfe5eb;
+}
+
+.rh-table tr td{
+    padding: 1.5rem;
+    text-align: left;
+    border-bottom: 1px solid #dfe5eb;
+}
+
+.rh-table tr td:nth-child(4){
+    padding: 1.5rem;
+    text-align: center;
+    border-bottom: 1px solid #dfe5eb;
+}
+
+.switch {
+    position: relative;
+    display: inline-block;
+    width: 50px;
+    height: 24px;
+}
+
+.switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+.slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-color: #ccc;
+    -webkit-transition: .4s;
+    transition: .4s;
+}
+
+.slider::before {
+    position: absolute;
+    content: "";
+    height: 16px;
+    width: 16px;
+    left: 4px;
+    bottom: 4px;
+    background-color: white;
+    -webkit-transition: .4s;
+    transition: .4s;
+}
+
+input:checked + .slider {
+    background-color: #46647c;
+}
+
+input:focus + .slider {
+    box-shadow: 0 0 1px #2196F3;
+}
+
+input:checked + .slider:before {
+    -webkit-transform: translateX(26px);
+    -ms-transform: translateX(26px);
+    transform: translateX(26px);
+}
+
+.employee-users {
+    width: 70%;
+}
+
+.employee-users h2 {
+    margin-bottom: 1.2rem;
+}
+
+.employee-users .box-container {
+    width: 100%;
+    height: fit-content;
+    background-color: #d7d7d7;
+    border: 1px dotted #333;
+}
+
+.employee-users .box-container ul{
+    list-style: none;
+}
+
+.employee-table {
+    width: 100%;
+    border: 1px solid #dfe5eb;
+    border-collapse: collapse;
+}
+
+.employee-table tr:nth-child(1) {
+    background-color: #eff2f7;
+}
+
+.employee-table tr:nth-child(even){
+    background-color: #f9fafc;
+}
+
+.employee-table tr th{
+    padding: 1.5rem;
+    text-align: center;
+    border-bottom: 1px solid #dfe5eb;
+}
+
+.employee-table tr td{
+    padding: 1.5rem;
+    text-align: center;    
+    border-bottom: 1px solid #dfe5eb;
+}
+
+.paddingSidebar{
+    margin-top: 0%;
+}
+
+h1{
+    font-size: 300%;
+}
+
+#container { 
+    height: 100%; 
+    width:100%; 
+    font-size: 0;
+    padding-left: 1%;
+}
+
+#iconStatus, #textStatus{
+    display: inline-block; 
+    *display: inline; zoom: 1; 
+    vertical-align: top; 
+    font-size: 20px;
+}
+
+#iconStatus{
+    width: 3%; 
+}
+
+#textStatus{
+    width: 97%; 
+}
+
+.tooltip {
+    position: relative;
+    display: inline-block;
+    border-bottom: 1px dotted black;
+  }
+  
+  .tooltip .tooltiptext {
+    visibility: hidden;
+    width: 120px;
+    background-color: black;
+    color: #fff;
+    text-align: center;
+    border-radius: 6px;
+    padding: 5px 0;
+    position: absolute;
+    z-index: 1;
+    bottom: 150%;
+    left: 50%;
+    margin-left: -60px;
+    opacity: 0;
+    transition: opacity 1s;
+  }
+  
+  .tooltip .tooltiptext::after {
+    content: "";
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    margin-left: -5px;
+    border-width: 5px;
+    border-style: solid;
+    border-color: black transparent transparent transparent;
+  }
+  
+  .tooltip:hover .tooltiptext {
+    visibility: visible;
+    opacity: 1;
+  }
+
+  /* Loading */
+
+  .loader {
+    border: 16px solid #f3f3f3;
+    border-radius: 50%;
+    border-top: 16px solid #3498db;
+    width: 120px;
+    height: 120px;
+    -webkit-animation: spin 2s linear infinite; /* Safari */
+    animation: spin 2s linear infinite;
+  }
+
+  .container { 
+    height: 100%;
+    position: relative;
+
+  }
+  
+  .center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+  }
+  
+  /* Safari */
+  @-webkit-keyframes spin {
+    0% { -webkit-transform: rotate(0deg); }
+    100% { -webkit-transform: rotate(360deg); }
+  }
+  
+  @keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+  }

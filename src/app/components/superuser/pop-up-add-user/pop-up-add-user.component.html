@@ -1,0 +1,25 @@
+<div class="pop-up">
+    <div class="title">
+        <h1>Nuevo Usuario</h1>
+    </div>
+    <div class="inputs">
+        <form action="">
+            <label for="email">Correo electrónico</label>
+            <input type="text" name="email" class="email" #email>
+
+            <label for="name" style="padding-top: 8%;">Nombre</label>
+            <input type="text" name="name" class="name" #name>
+
+            <div class="rh-slider">
+                <p>Recursos humanos</p>
+                <label class="switch">
+                    <input type="checkbox" #rh>
+                    <span class="slider"></span>
+                </label>
+            </div>
+
+            <input mat-dialog-close (click)="sendData(email.value, name.value, rh.checked)" type="submit" value="Añadir"
+                class="submit">
+        </form>
+    </div>
+</div>

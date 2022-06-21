@@ -1,0 +1,131 @@
+@import url(https://fonts.googleapis.com/css?family=Montserrat);
+
+/**========================================================================
+ *                           MAIN DISPLAY
+ *========================================================================**/
+
+html{
+  font-family: 'Montserrat', sans-serif;
+}
+
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+main{
+  background: linear-gradient(to left, #99cffc 0%, #ff9a79 100%);
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  display: grid;
+  grid-template-columns: 50% 50%;
+}
+
+@media screen and (max-width: 575px) {
+  svg#rocket-smoke {
+    display: none;
+    visibility: hidden;
+  }
+}
+
+/**========================================================================
+ *                           TEXT-LEFT SECTION
+ *========================================================================**/
+
+.text{
+  display: grid;
+  grid-template-rows: 5% 45% 50%;
+  align-items: center;
+  padding-top: 5%;
+  /* padding: 2.5%; */
+  /* font-weight:bolder */
+}
+
+.text-title {
+  /* font-weight:bolder; */
+  padding-left: 5%;
+  font-weight: bolder;
+  font-size: 1.5rem;
+}
+
+.text-header{
+  font-weight:bolder;
+  font-size: 4rem;
+  padding-left: 10%;
+}
+
+.text-description{
+  font-size: 1.2rem;
+  font-weight: bold;
+  padding-left: 10%;
+}
+
+
+/**========================================================================
+ *                           IMAGES-RIGHT SECTION
+ *========================================================================**/
+
+.images{
+  display: grid;
+  grid-template-rows: 30% 30%;
+  align-content: center;
+}
+
+.logo-section {
+  width: 100%;
+  height: 300px;
+  text-align: center;
+}
+
+.logo-section img{
+width: 225px;
+border-radius: 10px;
+}
+
+.sign-in-section{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.sign-in-section input{
+border-radius: 10px;
+}
+
+.sign-in-section input:hover{
+box-shadow: 0 1px 8px 0 #5f6367;
+}
+
+#sign-in {
+  padding: 1rem;
+  background-color: #e6ebf1;
+  width: fit-content;
+  height: fit-content;
+  display: flex;
+  border-radius: 50px;
+  justify-content: center;
+  align-items: center;
+  margin: 10px auto;
+  cursor: pointer;
+}
+
+#sign-in:hover {
+box-shadow: 0 1px 8px 0 #5f6367;    
+}
+
+#sign-in p{
+  margin: 0 1rem;
+}
+
+#sign-in span{
+background-image: url("http://purepng.com/public/uploads/large/purepng.com-microsoft-logo-iconlogobrand-logoiconslogos-251519939091wmudn.png");
+background-repeat: no-repeat;
+background-position: center;
+background-size: contain;
+width: 20px;
+height: 20px;
+}

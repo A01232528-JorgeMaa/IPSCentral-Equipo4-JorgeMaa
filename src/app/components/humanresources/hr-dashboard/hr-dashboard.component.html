@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Dashboard Apricot</title>
+        <link rel="stylesheet" href="/Dashboard/styles.css">
+        <!-- BoxIcons CDN Links -->
+        <link href='https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css' rel='stylesheet'>
+    </head>
+
+<body>
+    <!-- home-content -->
+    <section class="home-section">
+        <!-- home-content -->
+        <div class="home-content">
+            <div class="overview-boxes">
+                <div class="box">
+                    <div class="left-side">
+                        <div class="box_topic">Equipos aprobados</div>
+                        <div class="number">{{ApprovedTeams}}</div>
+                    </div>
+                    <i class='bx bx-check check'></i>
+                </div>
+                <div class="box">
+                    <div class="left-side">
+                        <div class="box_topic">Equipos pendientes</div>
+                        <div class="number">{{PendingTeams}}</div>
+                    </div>
+                    <i class='bx bxs-edit-alt edit' ></i>
+                </div>
+                <div class="box">
+                    <div class="left-side">
+                        <div class="box_topic">Huérfanos</div>
+                        <div class="number">{{Orphans}}</div>
+                    </div>
+                    <i class='bx bx-plus-medical plus' ></i>
+                </div>
+                <!-- <div class="box">
+                    <div class="left-side">
+                        <div class="box_topic">Total Profit</div>
+                        <div class="number">12,876</div>
+                        <div class="indicator">
+                            <i class='bx bx-down-arrow-alt down' ></i>
+                            <span class="text">Down from yesterday</span>
+                        </div>
+                    </div>
+                    <i class='bx bx-cart-download cart four' ></i>
+                </div> -->
+            </div>
+            
+            <!-- sales content -->
+            <div class="sales-boxes">
+                <div class="recent-sale box">
+                    <div class="title">Equipos</div>
+                    <app-hr-pie-chart></app-hr-pie-chart>
+                </div>
+
+                <!-- right side -->
+                <div class="top-sales box">
+                    <div class="title">Clasificado por categoría</div>
+                    <app-hr-doughnut-chart></app-hr-doughnut-chart>
+                </div>
+            </div>
+        </div>
+
+    </section>
+    
+
+    <!-- <script src="/Dashboard/script.js"></script> -->
+    
+</body>
+<footer>
+  <app-footer></app-footer>
+</footer>
+</html>

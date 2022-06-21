@@ -1,0 +1,619 @@
+@import url(https://fonts.googleapis.com/css?family=Montserrat);
+/**========================================================================
+ *                           Elementos principales
+ *========================================================================**/
+.container{
+    /* Borde */
+
+    /* Fuente */
+
+    /* Tamanio */
+
+    /* Formato */
+    grid-template-columns: 350px auto;
+    display: grid;
+    
+}
+
+#title, .styled-table caption{
+    /* Borde */
+    padding: 1rem;
+    margin: 0;
+
+    /* Fuente */
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 900;
+    text-align: center;
+    font-size:250%;
+
+
+    /* Tamanio */
+
+    /* Formato */
+}
+
+#title{
+    width: 1024px;
+}
+
+.display{
+    /* Borde */
+
+    /* Fuente */
+
+    /* Tamanio */
+
+    /* Formato */
+    margin-left: 15px;
+    padding-left: 20px;
+}
+
+/**====x====================================================================
+ *                           Buscador
+ *========================================================================**/
+.finder{
+    /* Borde */
+    margin-left: 10px;
+    margin-top: 30px;
+    position: static;
+
+    /* Fuente */
+
+    /* Tamanio */
+    height: 82vh;
+    width: 330px;
+
+    /* Formato */
+    box-shadow: 0 0 5px rgb(108, 108, 108);
+    background: rgb(254, 254, 247);
+}
+
+.searchform{
+    /* The search form. */
+    background-color: #e65624;
+    margin-top: 5px;
+    padding:10px 10px 25px 10px;
+    position:relative;
+    box-shadow: 0 0 5px rgb(108, 108, 108);
+    border-radius: 5px;
+}
+
+.searchbar fieldset{
+    border: none;
+}
+
+.searcharea{
+    border:none;
+    float:left;
+    line-height:22px;
+    margin-right:5px;
+    outline:medium none;
+    text-shadow:1px 1px 0 white;
+    border-radius: 5px;
+    color: black;
+    width: 68%;
+    height: 34px;
+}
+
+.submitbutton{
+    width:75px;
+    height:34px;
+    overflow:hidden;
+    cursor:pointer;
+    border-radius: 5px;
+    background-color: rgb(255, 255, 255);
+}
+
+.submitbutton:hover{
+    background-position:left bottom;
+
+}
+
+.employee-btn{
+    /* Borde */
+    box-shadow: 0 0 5px rgb(108, 108, 108);
+    border-radius: 10px;
+    padding-top: 1%;
+    margin-left: 3%;
+    margin-top: 3%;
+    border: none;
+    
+    /* Fuente */
+    text-align: left;
+
+    /* Tamanio */
+    height: 35px;
+    min-width: 70%;
+    width: 70%;
+
+    /* Formato */
+    background-color: #e2e0e0;
+    word-wrap: break-word;
+    cursor: pointer;
+
+    overflow-x: auto;
+}
+
+.employee-btn:hover{
+    /* Borde */
+
+    /* Fuente */
+
+    /* Tamanio */
+
+    /* Formato */
+    background-color: #f3f3f3;
+    transition: all 0.5s;
+}
+
+/**========================================================================
+ *                           Equipo 360
+ *========================================================================**/
+
+ /* En edicion */
+.styled-table {
+    /* Borde */
+    box-shadow: 0 0 10px rgb(89, 71, 71);
+    border-collapse: collapse;
+    border-collapse:separate;
+    border-spacing: 3px;
+    border-radius:6px;
+    margin: 25px 0;
+
+    /* Fuente */
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1rem;
+    
+    /* Tamanio */
+    max-width: 100%;
+    min-width: 90%;
+    
+    
+    /* Formato */
+    table-layout: fixed;
+    display: table;
+}
+
+.styled-rows{
+  min-width: 800px;
+}
+
+.styled-rows th:nth-child(1){
+  width: 7%;
+}
+
+.styled-rows th:nth-child(2){
+  width: 40%;
+  text-align: left;
+}
+
+.styled-rows th:nth-child(3){
+  width: 15%;
+}
+
+.styled-rows th:nth-child(4){
+  width: 10%;
+}
+
+.styled-rows th:nth-child(5){
+  width: 10%;
+}
+
+.styled-rows th:nth-child(6){
+  width: 15%;
+}
+
+
+/* <th style="width: 5%;">ID</th>
+<th style="width: 40%;">Nombre</th>
+<th style="width: 15%;">Evaluación</th>
+<th style="width: 10%;">Horas</th>
+<th style="width: 10%">Status</th>
+<th style="width: 15%;">Acción</th> */
+
+.styled-table caption{
+    /* Borde */
+    border-style: outset inset inset outset;
+    border-radius: 10px;
+    margin-bottom: 25px;
+
+    /* Fuente */
+
+    /* Tamanio */
+    
+    /* Formato */
+    background-color: rgb(254, 254, 247);
+
+    white-space: nowrap; 
+    width: 96.5%; 
+    overflow: hidden;
+    text-overflow: ellipsis; 
+    border: 1px solid #000000;
+}
+
+/* En edicion */
+.styled-table tbody{ 
+    /* Borde */
+
+    /* Fuente */
+
+    /* Tamanio */
+
+    /* Formato */
+    display: block;
+    max-height: 60vh;
+    overflow-y: auto;
+} 
+
+.styled-table tbody tr {
+    /* Borde */
+    border-bottom: 3px solid #dddddd;
+
+    /* Fuente */
+
+    /* Tamanio */
+    width: 100%;
+
+    /* Formato */
+    
+}
+
+.styled-table tbody tr:last-of-type {
+    /* Borde */
+    border-bottom: 2px solid #009879;
+
+    /* Fuente */
+
+    /* Tamanio */
+
+    /* Formato */
+    
+}
+
+.styled-table tbody tr:nth-of-type(odd){
+    /* Borde */
+
+    /* Fuente */
+
+    /* Tamanio */
+
+    /* Formato */
+    background-color: #ece7e7;
+}
+
+.styled-table tbody tr:nth-of-type(even) {
+    /* Borde */
+
+    /* Fuente */
+
+    /* Tamanio */
+
+    /* Formato */
+    background-color: #f3f3f3;
+}
+
+.styled-table tbody tr:nth-of-type(odd):hover, .styled-table tbody tr:nth-of-type(even):hover{
+    /* Borde */
+
+    /* Fuente */
+
+    /* Tamanio */
+
+    /* Formato */
+    background-color: #c8c8c8;
+}
+
+/* en edicion */
+.styled-table thead, .styled-table tbody tr{ 
+    display: table;
+    width: 100%;
+    table-layout: fixed;
+}
+
+.styled-table thead tr {
+    /* Borde */
+    border-radius: 10px;
+
+    /* Fuente */
+
+    /* Tamanio */
+
+    /* Formato */
+    background-color: #e65624;
+    color: #ffffff;
+}
+
+.styled-table th, .styled-table td {
+    /* Borde */
+    padding: 12px 15px;
+
+    /* Fuente */
+    text-align: center;
+
+    /* Tamanio */
+    max-width: 150px;
+
+    /* Formato */
+    /* word-wrap: break-word; */
+    white-space: nowrap; 
+    overflow: hidden;
+    text-overflow: ellipsis; 
+}
+
+#employees tbody{
+    max-height: 67.3vh;
+}
+
+#employees{
+    margin: 0;
+}
+
+.circle2{
+    margin-top: 5px;
+    text-align: end;
+    float: left;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    color: #fff;
+    background: green;
+}
+
+.circle1{
+  margin-top: 5px;
+  text-align: end;
+  float: left;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  color: #fff;
+  background: orange;
+}
+
+.circle0{
+  margin-top: 5px;
+  text-align: end;
+  float: left;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  color: #fff;
+  background: red;
+}
+
+
+
+
+/**========================================================================
+ *                           Iconos de Filtros
+ *========================================================================**/
+ .filters{
+    list-style:none;
+    margin:10px 0 0 140px;
+    /* height:19px; */
+
+    position:relative;
+}
+
+.filters li{
+    float:left;
+    /* height:19px; */
+    text-indent:-999px;
+    cursor:pointer;
+    margin-right:10px;
+}
+
+/* Alfabeto superior */
+.letter-up-filter{
+    background:url("/assets/icons/searchIcons/letterFilter-icon.png") no-repeat;
+    background-size: contain;
+    width:15px;
+    opacity: 0.5;
+}
+
+/* Alfabeto inferior */
+.letter-down-filter{
+    background:url("/assets/icons/searchIcons/letterFilterBack-icon.png") no-repeat;
+    background-size: contain;
+    width:15px;
+    opacity: 0.5;
+}
+
+/* Aprobados */
+.approved{ 
+    background:url("/assets/icons/searchIcons/completeFilter-icon.png") no-repeat;
+    background-size: contain;
+    width:15px; 
+    opacity: 0.5;
+    /* background-position:-44px 0; */
+}
+
+/* No aprobados */
+.not-approved{
+    background:url("/assets/icons/searchIcons/notCompleteFilter-icon.png") no-repeat;
+    background-size: contain;
+    width:15px;
+    opacity: 0.5;
+}
+
+/* Huerfanos */
+.orphans{ 
+    background:url("/assets/icons/searchIcons/orphan-icon.png") no-repeat;
+    background-size: contain;
+    width:15px; 
+    opacity: 0.5;
+    /* background-position:right 0; */
+}
+
+.with-team{ 
+  background:url("/assets/icons/searchIcons/team-icon.png") no-repeat;
+  background-size: contain;
+  width:20px; 
+  opacity: 0.5;
+  /* background-position:right 0; */
+}
+
+.active, .orphans:hover, .not-approved:hover, .approved:hover, .letter-down-filter:hover, .letter-up-filter:hover{ 
+    background-position:right bottom;
+    opacity: 1;
+}
+
+.active{
+    filter:drop-shadow(0px 0px 5px #fff);
+}
+
+
+
+/* --Botones de aprobar y cancelar. */
+
+.buttons {
+    text-align: right;
+    margin-top: 24px;
+}
+
+.buttons button {
+    font-weight: bold;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: all 0.2s ease-in-out;
+    
+}
+
+.button-confirm{
+    width: 30%;
+    height: 48px;
+    background-color: #1a9f1f;
+    color: #d7d7d7;
+}
+
+
+
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 50px;
+  height: 24px;
+}
+
+.switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-color: red;
+  -webkit-transition: .4s;
+  transition: .4s;
+}
+
+.slider::before {
+  position: absolute;
+  content: "";
+  height: 16px;
+  width: 16px;
+  left: 4px;
+  bottom: 4px;
+  background-color: white;
+  -webkit-transition: .4s;
+  transition: .4s;
+}
+
+input:checked + .slider {
+  background-color: green;
+}
+
+input:focus + .slider {
+  box-shadow: 0 0 1px #2196F3;
+}
+
+input:checked + .slider:before {
+  -webkit-transform: translateX(26px);
+  -ms-transform: translateX(26px);
+  transform: translateX(26px);
+}
+
+.warningIcon{
+  width: auto; 
+  height: 25px; 
+  margin: -10px;
+}
+
+.addIcon{
+  width: auto; 
+  height: 35px; 
+  margin: -10px;
+  cursor: pointer;
+}
+
+.buttons button:hover{
+  transform: translateY(-3px);
+  box-shadow: 0 4px 17px rgba(0, 0, 0, 0.35);
+  
+}
+
+.addIconFigure figure:hover{
+  transform: translateY(3px);
+  box-shadow: 0 4px 17px rgba(0, 0, 0, 0.35);
+}
+
+
+/* Hover text */
+
+.tooltip {
+  position: relative;
+  display: inline-block;
+}
+
+.tooltip .tooltiptext {
+  visibility: hidden;
+  width: 200px;
+  background-color: black;
+  color: #fff;
+  text-align: center;
+  border-radius: 6px;
+  padding: 5px 0;
+  position: absolute;
+  z-index: 1;
+  top: 110%;
+  left: 5%;
+  margin-left: -60px;
+  opacity: 0;
+  transition: opacity 1s;
+}
+
+.tooltip .tooltiptext::after {
+  content: "";
+  position: absolute;
+  bottom: 100%;
+  left: 50%;
+  margin-left: -5px;
+  border-width: 5px;
+  border-style: solid;
+  border-color: transparent transparent black transparent;
+}
+
+.tooltip:hover .tooltiptext {
+  visibility: visible;
+  opacity: 1;
+}
+
+.messageTeam {
+  text-align: center; 
+  margin-top: auto; 
+  margin-bottom: auto; 
+  padding-left: 2%; 
+  padding-right: 2%;
+}
+
+.boldTextMessageTeam{
+  font-size: 2.5rem; 
+  font-weight: 600;
+}

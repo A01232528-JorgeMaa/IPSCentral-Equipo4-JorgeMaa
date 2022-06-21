@@ -1,0 +1,38 @@
+
+<div class="sidenav" [ngClass]="collapsed ? 'sidenav-collapsed': ''">
+  <div class="logo-container">
+      <!-- <button class="logo" (click)="toggleCollapse()">IPS</button> -->
+      <button class="logo-icon" (click)="toggleCollapse()"><i class='bx bx-menu'></i></button>
+      <div class="logo-text" @fadeInOut *ngIf="collapsed">IPS Central</div>
+      <button class="btn-close" @rotate *ngIf="collapsed" (click)="closeSidenav()">
+          <i class='bx bx-x'></i>
+      </button>
+  </div>
+  <div class="image-details" @fadeInOut *ngIf="collapsed">
+      <img src="{{imageSrc}}" alt="{{imageAlt}}" />
+  </div>
+  <ul class="sidenav-nav">
+      <li class="sidenav-nav-item" *ngFor="let data of navData">
+          <a class="sidenav-nav-link" [routerLink]="[data.routeLink]"
+              routerLinkActive="active"
+              [routerLinkActiveOptions]="{exact: true}">
+              <i class="sidenav-link-icon" [class]="data.icon"></i>
+              <span class="sidenav-link-text" @fadeInOut *ngIf="collapsed">
+                  {{data.label}}
+              </span>
+          </a>
+      </li>
+  </ul>
+  <div class="logo-contain">
+      <button class="logo-icon" (click)="toggleCollapse()"><i class='bx bx-user' ></i></button>
+      <div class="logo-text" @fadeInOut *ngIf="collapsed"> {{profile.givenName}}
+          <div class="logo-description">Empleado</div>
+      </div>
+      <button class="btn-close" @fadeInOut *ngIf="collapsed" (click)="logout()">
+          <i class='bx bx-log-out'></i>
+      </button>
+  </div>
+</div>
+
+<app-body [collapsed]="isSideNavCollapsed"
+[screenWidth]="screenWidth"></app-body>

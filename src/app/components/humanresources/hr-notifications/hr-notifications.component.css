@@ -1,0 +1,586 @@
+@import url(https://fonts.googleapis.com/css?family=Montserrat);
+
+/**========================================================================
+ *                           MAIN CONTAINER
+ *========================================================================**/
+body{
+  font-family: 'Montserrat', sans-serif;
+  display: grid;
+  grid-template-columns: 27% 73%;
+}
+
+ .container{
+  box-shadow: 0px 6px 10px rgba(0, 0, 0, 0.4);
+  margin: 10px;
+  background-color: #d7d7d7;
+  border-radius: 5px;
+  padding-bottom: 5px;
+  max-height: 650px;
+  min-height: 650px;
+  overflow-y: auto;
+}
+
+.summary-date{
+  /* Borde */
+  border-radius: 20px;
+
+  /* Tamanio */
+  width: fit-content;
+  padding: 10px;
+  margin: 10px;
+
+  /* Formato */
+  background-color: #fe8760;
+  /* list-style-type: none; */
+  cursor: pointer;
+}
+
+.day{
+  /* Borde */
+
+  /* Tamanio */
+  /* padding-top: 5px; */
+
+  /* Formato */
+}
+
+/**========================================================================
+ *                           ANIMACIONES
+ *========================================================================**/
+
+@keyframes open {
+  0% {
+    opacity: 0
+  }
+  100% {
+    opacity: 1
+  }
+}
+
+/* closing animation */
+@keyframes close {
+  0% {
+    opacity: 1
+  }
+  100% {
+    opacity: 0
+  }
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+    /* transform: translateY(-1vw); */
+    transform: translateY(-10px);
+  }
+
+  100% {
+    opacity: 1;
+    /* margin-left: 0px */
+  }
+}
+
+.day[open] .info{
+  animation: fadeIn 0.5s cubic-bezier(0.785, 0.135, 0.15, 0.86);
+  /* animation-iteration-count: infinite; */
+}
+
+
+/**========================================================================
+ *                           INFO CONTAINER
+ *========================================================================**/
+.info {
+/* Borde */
+  border-radius: 10px;
+
+  /* Tamanio */
+  margin-bottom: 15px;
+  margin-left: 50px;
+  max-height: 150px;
+  width: 974px;
+  height: 125px;
+
+  /* Formato */
+  background: radial-gradient(#58e9f7, #51c2ff);
+  box-shadow: 0px 6px 10px rgba(0, 0, 0, 0.5);
+  grid-template-columns: 100px 799px 75px;
+  transition: all 0.2s;
+  display: grid;
+}
+
+.info:hover {
+  box-shadow: 0px 6px 10px rgba(0, 0, 0, 0.4);
+  transform: scale(1.01);
+}
+
+/**========================================================================
+ *                           INFO LEFT
+ *========================================================================**/
+.info-left{
+  /* Borde */
+
+  /* Tamanio */
+
+  /* Formato */
+  grid-template-rows: 75% 25%;
+  display: grid;
+}
+
+.eval0{
+  background:url("/assets/icons/peerIcon.png") no-repeat;
+  background-size: cover;
+  width: 75px;
+  height: 75px;
+  justify-self: center;
+  align-self: center;
+  margin: 0;
+}
+
+.eval1{
+  background:url("/assets/icons/teamIcon.png") no-repeat;
+  background-size: cover;
+  width: 75px;
+  height: 75px;
+  justify-self: center;
+  align-self: center;
+  margin: 0;
+}
+
+.eval2{
+  background:url("/assets/icons/leaderIcon.png") no-repeat;
+  background-size: cover;
+  width: 75px;
+  height: 75px;
+  justify-self: center;
+  align-self: center;
+  margin: 0;
+}
+
+
+
+/**========================================================================
+ *                           INFO MIDDLE
+ *========================================================================**/
+.info-middle{
+  /* Borde */
+
+  /* Tamanio */
+
+  /* Formato */
+  grid-template-rows: 30% 70%;
+  display: grid;
+}
+
+/**============================================
+ *               UPPER
+ *=============================================**/
+ .info-middle-upper{
+  /* Borde */
+
+  /* Tamanio */
+  align-self: center;
+
+  /* Formato */
+}
+
+
+
+ /**============================================
+ *               LOWER
+ *=============================================**/
+.info-middle-lower{
+  background-color: #7acbfa;
+  border-radius: 5px;
+  margin: 5px;
+  border-style: inset;
+  overflow-y: auto;
+  max-height: 77.51px;
+}
+
+.textbox{
+  margin: 0;
+  padding: 5px;
+  word-wrap: break-word;
+}
+
+/**========================================================================
+ *                           INFO RIGHT
+ *========================================================================**/
+.info-right{
+  justify-self: center;
+  align-self: center;
+}
+
+ .request0{
+  background:url("/assets/icons/teamRemovingIcon.png") no-repeat;
+  background-size: cover;
+  width: 40px;
+  height: 40px;
+}
+
+.request0:hover{
+  filter: drop-shadow(3px 3px 2px #ff0000);
+  transform: scale(1.05);
+  transition: .5s;
+}
+
+.request1{
+  background:url("/assets/icons/teamAddingIcon.png") no-repeat;
+  background-size: cover;
+  width: 40px;
+  height: 40px;
+}
+
+.request1:hover{
+  filter: drop-shadow(3px 3px 2px #17b81f);
+  transform: scale(1.05);
+  transition: .25s;
+}
+
+
+
+
+.info_link{
+  position: relative;
+  text-decoration: none;
+  color: rgba(255, 255, 255, 0.9);
+}
+
+.info_link::after {
+  position: absolute;
+  top: 25px;
+  left: 0;
+  content: "";
+  width: 0%;
+  height: 3px;
+  background-color: rgba(255, 255, 255, 0.6);
+  transition: all 0.5s;
+}
+
+.info_link:hover::after {
+  width: 100%;
+}
+
+/**========================================================================
+ *                           TABLA DE USUARIOS
+ *========================================================================**/
+ .styled-table {
+  /* Borde */
+  box-shadow: 0 0 10px rgb(89, 71, 71);
+  border-collapse: collapse;
+  border-collapse:separate;
+  border-spacing: 3px;
+  border-radius:6px;
+  margin: 25px 0;
+
+  /* Fuente */
+  font-family: 'Montserrat', sans-serif;
+  font-size: 1rem;
+  
+  /* Tamanio */
+  max-width: 100%;
+  min-width: 90%;
+  max-height: 100%;
+  
+  
+  /* Formato */
+  table-layout: fixed;
+  display: table;
+}
+
+/* En edicion */
+.styled-table tbody{ 
+  /* Borde */
+
+  /* Fuente */
+
+  /* Tamanio */
+
+  /* Formato */
+  display: block;
+  max-height: 100%;
+  overflow-y: auto;
+} 
+
+.styled-table tbody tr {
+  /* Borde */
+  border-bottom: 3px solid #dddddd;
+
+  /* Fuente */
+
+  /* Tamanio */
+  width: 100%;
+
+  /* Formato */
+  
+}
+
+.styled-table tbody tr:last-of-type {
+  /* Borde */
+  border-bottom: 2px solid #f76300;
+
+  /* Fuente */
+
+  /* Tamanio */
+
+  /* Formato */
+  
+}
+
+.styled-table tbody tr:nth-of-type(odd){
+  /* Borde */
+
+  /* Fuente */
+
+  /* Tamanio */
+
+  /* Formato */
+  background-color: #ece7e7;
+}
+
+.styled-table tbody tr:nth-of-type(even) {
+  /* Borde */
+
+  /* Fuente */
+
+  /* Tamanio */
+
+  /* Formato */
+  background-color: #f3f3f3;
+}
+
+.styled-table tbody tr:nth-of-type(odd):hover, .styled-table tbody tr:nth-of-type(even):hover{
+  /* Borde */
+
+  /* Fuente */
+
+  /* Tamanio */
+
+  /* Formato */
+  background-color: #c8c8c8;
+}
+
+/* en edicion */
+.styled-table thead, .styled-table tbody tr{ 
+  display: table;
+  width: 100%;
+  table-layout: fixed;
+}
+
+.styled-table thead tr {
+  /* Borde */
+  border-radius: 10px;
+
+  /* Fuente */
+
+  /* Tamanio */
+
+  /* Formato */
+  background-color: #e65624;
+  color: #ffffff;
+}
+
+.styled-table th, .styled-table td {
+  /* Borde */
+  padding: 12px 15px;
+
+  /* Fuente */
+  text-align: center;
+
+  /* Tamanio */
+  max-width: 150px;
+
+  /* Formato */
+  /* word-wrap: break-word; */
+  white-space: nowrap; 
+  overflow: hidden;
+  text-overflow: ellipsis; 
+}
+
+#employees tbody{
+  max-height: 85vh;
+}
+
+#employees{
+  margin: 0;
+}
+
+/**========================================================================
+ *                           Buscador de empleados
+ *========================================================================**/
+ fieldset{
+   border: none;
+ }
+
+ .finder{
+  /* Borde */
+  margin-left: 10px;
+  margin-top: 30px;
+  position: static;
+
+  /* Fuente */
+
+  /* Tamanio */
+  height: 82vh;
+  width: 330px;
+
+  /* Formato */
+  box-shadow: 0 0 5px rgb(108, 108, 108);
+  background: rgb(254, 254, 247);
+}
+
+.searchform{
+  /* The search form. */
+  background-color: #e65624;
+  margin-top: 5px;
+  padding:10px 10px 25px 10px;
+  position:relative;
+  box-shadow: 0 0 5px rgb(108, 108, 108);
+  border-radius: 5px;
+}
+
+.searchbar fieldset{
+  border: none;
+}
+
+.searcharea{
+  border:none;
+  float:left;
+  line-height:22px;
+  margin-right:5px;
+  outline:medium none;
+  text-shadow:1px 1px 0 white;
+  border-radius: 5px;
+  color: black;
+  width: 68%;
+  height: 34px;
+}
+
+.submitbutton{
+  width:75px;
+  height:34px;
+  overflow:hidden;
+  cursor:pointer;
+  border-radius: 5px;
+  background-color: rgb(255, 255, 255);
+}
+
+.submitbutton:hover{
+  background-position:left bottom;
+
+}
+
+.employee-btn{
+  /* Borde */
+  box-shadow: 0 0 5px rgb(108, 108, 108);
+  border-radius: 10px;
+  padding-top: 1%;
+  margin-left: 3%;
+  margin-top: 3%;
+  border: none;
+  
+  /* Fuente */
+  text-align: left;
+
+  /* Tamanio */
+  height: 35px;
+  min-width: 70%;
+  width: 70%;
+
+  /* Formato */
+  background-color: #e2e0e0;
+  word-wrap: break-word;
+  cursor: pointer;
+
+  overflow-x: auto;
+}
+
+.employee-btn:hover{
+  /* Borde */
+
+  /* Fuente */
+
+  /* Tamanio */
+
+  /* Formato */
+  background-color: #f3f3f3;
+  transition: all 0.5s;
+}
+
+/**========================================================================
+ *                           Iconos de Filtros
+ *========================================================================**/
+ .filters{
+  list-style:none;
+  margin:10px 0 0 140px;
+  /* height:19px; */
+
+  position:relative;
+}
+
+.filters li{
+  float:left;
+  /* height:19px; */
+  text-indent:-999px;
+  cursor:pointer;
+  margin-right:10px;
+}
+
+/* Alfabeto superior */
+.letter-up-filter{
+  background:url("/assets/icons/searchIcons/letterFilter-icon.png") no-repeat;
+  background-size: contain;
+  width:15px;
+  opacity: 0.5;
+}
+
+/* Alfabeto inferior */
+.letter-down-filter{
+  background:url("/assets/icons/searchIcons/letterFilterBack-icon.png") no-repeat;
+  background-size: contain;
+  width:15px;
+  opacity: 0.5;
+}
+
+/* Aprobados */
+.approved{ 
+  background:url("/assets/icons/searchIcons/completeFilter-icon.png") no-repeat;
+  background-size: contain;
+  width:15px; 
+  opacity: 0.5;
+  /* background-position:-44px 0; */
+}
+
+/* No aprobados */
+.not-approved{
+  background:url("/assets/icons/searchIcons/notCompleteFilter-icon.png") no-repeat;
+  background-size: contain;
+  width:15px;
+  opacity: 0.5;
+}
+
+/* Huerfanos */
+.orphans{ 
+  background:url("/assets/icons/searchIcons/orphan-icon.png") no-repeat;
+  background-size: contain;
+  width:15px; 
+  opacity: 0.5;
+  /* background-position:right 0; */
+}
+
+.with-team{ 
+background:url("/assets/icons/searchIcons/team-icon.png") no-repeat;
+background-size: contain;
+width:20px; 
+opacity: 0.5;
+/* background-position:right 0; */
+}
+
+.active, .orphans:hover, .not-approved:hover, .approved:hover, .letter-down-filter:hover, .letter-up-filter:hover{ 
+  background-position:right bottom;
+  opacity: 1;
+}
+
+.active{
+  filter:drop-shadow(0px 0px 5px #fff);
+}

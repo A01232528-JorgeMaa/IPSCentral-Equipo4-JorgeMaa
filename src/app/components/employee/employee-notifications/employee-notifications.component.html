@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Notifications</title>
+</head>
+
+<!-- 
+Una notificacion debe tener:
+    Sender: string, 
+    Addressee: string, 
+    EvalType: number, 
+    RequestType: number, 
+    Status: number,
+    userComplaint?: string,
+    HRresponse?: string, 
+    DataCreated: Date, 
+    DataSolved?: Date
+-->
+
+
+<body>
+    <div class="container">
+        <div class="days" *ngFor="let day of Notificationdata">
+            
+            <details class="day" open>
+                <summary class="summary-date">{{ day.date.toString().split("T")[0] | date: 'MMM d, y' }}</summary>
+                
+                <div class="info" *ngFor="let not of day.Notifications">
+
+                    <div class="info-left">
+                        <p class="eval{{not.EvalType}}"></p>
+                        <p class="info_link" style="text-align: center; margin-left: 2px; font-weight: bold;">{{ not.DataCreated.toString() | date: 'shortTime' : '+0' }}</p>
+                    </div>
+
+                    <div class="info-middle">
+                        <div class="info-middle-upper">
+
+                            <div *ngIf="not.DataSolved">
+                                <p class="textbox">RH comento sobre la peticion de {{ not.Sender }} hecha el dia {{ not.DataSolved.toString().split("T")[0] | date: 'MMM d, y'}}</p>
+                            </div>
+
+                            <div *ngIf="!not.DataSolved">
+                                
+                                <div *ngIf="not.RequestType">
+                                    <!-- <p class="textbox">{{ not.Sender }} ha hecho una peticion para agregar a {{ not.Addressee }} a su equipo</p> -->
+                                    <p style="margin:0;display:inline;font-weight: bold;">{{ not.Sender }} </p>
+                                    <p style="margin:0;display:inline;">ha hecho una peticion para agregar a </p>
+                                    <p style="margin:0;display:inline;font-weight: bold;">{{ not.Addressee }} </p>
+                                    <p style="margin:0;display:inline;">a su equipo</p>
+                                </div>
+
+                                <div *ngIf="!not.RequestType">
+                                    <p class="textbox">{{ not.Sender }} ha hecho una peticion para eliminar de su equipo a {{ not.Addressee }}</p>
+                                </div>
+
+                            </div>
+                        </div>
+
+                        <div class="info-middle-lower">
+
+                            <div *ngIf="not.DataSolved">
+                                <p class="textbox">Un administrador de recursos humanos comento '{{ not.HRresponse }}' sobre tu peticion '{{ not.userComplaint }}' con respecto a {{ not.Addressee }}</p>
+                            </div>
+
+                            <div *ngIf="!not.DataSolved">
+                                <p class="textbox">{{ not.userComplaint }}</p>
+                            </div>
+
+                            <!-- <p class="textbox">Response</p> -->
+                            
+                        </div>
+                        <!-- <p class="info_apply">
+                            <a class="info_link">{{not.Addressee}} <i class="fas fa-arrow-right"></i></a>
+                            </p> -->
+                    </div>
+
+                    <div class="info-right">
+                        <p class="request{{ not.RequestType }}" style="margin: 0;"></p>
+                    </div>
+
+                </div>
+
+                
+            </details>
+
+
+        </div>
+    </div>
+    
+</body>
+</html>

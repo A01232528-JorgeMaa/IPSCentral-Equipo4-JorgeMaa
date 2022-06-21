@@ -1,0 +1,142 @@
+:root {
+    --gray: #d7d7d7;
+    --blue: #46647c;
+    --black: #333;
+    --orange: #e65624;
+    --deep-blue: #282c38;
+}
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html{
+    font-size: 62.5%;
+}
+
+main {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+}
+
+main .title-section {
+    width: 95%;
+    margin-bottom: 36px;
+}
+
+main .title-section h1 {
+    font-size: 3rem;
+    margin-top: 2.4rem;
+}
+
+main .content-section {
+    width: 95%;
+    height: 70%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+main .content-section .message {
+    width: 100%;
+    max-width: 800px;
+    height: fit-content;
+    background-color: #46647c;
+    border-radius: 5px;
+    padding-bottom: 24px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+}
+
+main .content-section .message .message-content {
+    padding: 15px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+main .content-section .message .message-content p {
+    margin: 25px 0;
+    font-size: 1.5rem;
+    color: white;
+    text-align: center;
+    line-height: 1.5rem;
+}
+
+main .content-section .message .message-content p:nth-child(3) {
+    margin-top: 32px;
+    font-weight: bold;
+}
+
+main .content-section .message .button-content {
+    width: 100%;
+    bottom: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+main .content-section .message .button-content button {
+    width: 30%;
+    height: 40px;
+    background-color: #e65624;
+    color: #d7d7d7;
+    font-weight: bold;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: all 0.2s ease-in-out;
+}
+
+main .content-section .message .button-content button:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 4px 17px rgba(0, 0, 0, 0.35);
+}
+
+
+/* SPINNING LOADING */
+
+.loader {
+  border: 16px solid #f3f3f3;
+  border-radius: 50%;
+  border-top: 16px solid #3498db;
+  width: 120px;
+  height: 120px;
+  -webkit-animation: spin 2s linear infinite; /* Safari */
+  animation: spin 2s linear infinite;
+}
+
+.container { 
+  height: 100%;
+  position: relative;
+
+}
+
+.center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+}
+
+/* Safari */
+@-webkit-keyframes spin {
+  0% { -webkit-transform: rotate(0deg); }
+  100% { -webkit-transform: rotate(360deg); }
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}

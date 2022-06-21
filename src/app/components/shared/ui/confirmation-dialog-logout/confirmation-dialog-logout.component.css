@@ -1,0 +1,46 @@
+#hr-title .button-section {
+    display: flex;
+    justify-content: center;
+}
+
+#hr-title .add-user-button-center {
+    background: #dfe5eb ;
+    border: 1px solid #d7d7d7;
+    width: fit-content;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 5px;
+    cursor: pointer;
+    grid-area: center;
+    padding-left: 15px;
+    padding-right: 15px;
+    margin-right: 5px;
+}
+
+
+#hr-title .add-user-button-right {
+    background: #dfe5eb ;
+    border: 1px solid #d7d7d7;
+    width: fit-content;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    grid-area: right;
+    margin-left: 5px;
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+#hr-title .add-user-button-center:hover {
+    box-shadow: 0 1px 5px 0 #5f6367;
+}
+
+#hr-title .add-user-button-right:hover {
+    box-shadow: 0 1px 5px 0 #5f6367;
+}
+
+.hr-users {
+    width: 100%;
+}

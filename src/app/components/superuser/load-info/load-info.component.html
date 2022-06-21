@@ -1,0 +1,69 @@
+<link rel="stylesheet" href="./load-info.component.css">
+
+<body *ngIf="display == 0"> 
+  <div class="container">
+      <div class="center">
+          <div class="loader"></div>
+      </div>
+      
+  </div>
+</body>
+
+<ng-container *ngIf="display != 0">
+
+  <main *ngIf="display == 1">
+    <section class="title-section">
+        <h1>Cargar información</h1>
+    </section>
+    <section class="content-section">
+        <div class="message">
+            <div class="message-content">
+                <p>No tienes ningún archivo cargado.</p>
+            </div>
+            <div class="button-content">
+                <button mat-button (click)="viewLoadFile()">Cargar archivo</button>
+            </div>
+        </div>
+    </section>
+  </main>
+
+
+  <main *ngIf="display == 2">
+    <section class="title-section">
+        <h1>Cargar información</h1>
+    </section>
+    <section class="content-section">
+        <div class="message">
+            <div class="message-content">
+                <p>Una vez que se carge la información a la base de datos, no será posible cargar otro archivo para este
+                    periodo.
+                </p>
+                <p>La información será liberada para todos los empleados de recursos humanos y lo empleados para empezar
+                    la evaluación 360.</p>
+                <p>
+                    ¿Estas seguro que quieres encargar la información?
+                </p>
+            </div>
+            <div class="button-content">
+                <button mat-button (click)="openDialog()">Cargar información</button>
+            </div>
+        </div>
+    </section>
+  </main>
+
+
+  <main *ngIf="display == 3">
+    <section class="title-section">
+        <h1>Cargar información</h1>
+    </section>
+    <section class="content-section">
+        <div class="message">
+            <div class="message-content">
+                <p>Arhivo ya cargado.
+                </p>
+                <p>Contacta al administrador para poder editar los datos de IPS Central.</p>
+            </div>
+        </div>
+    </section>
+  </main>
+</ng-container>

@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div class="main">
+        <p id="title" style="text-align:left;">Visualizador de Evaluaciones 360</p>
+        <div class="container">
+            <div class="finder">
+                <div class="searchbar">
+                    <fieldset>
+                        <form class="searchform" method="post">
+                            <input (keyup)="sortUserList(1,searchQuery)" class="searcharea" type="text" placeholder="Buscar Usuario" [(ngModel)]="searchQuery" [ngModelOptions]="{standalone: true}">
+                            <input type="submit" value="Reset" class="submitbutton" (click)="queryUsers(); searchQuery=''"/>
+
+                            <ul class="filters">
+                                <li *ngIf="!alphabeticSort" class="letter-up-filter" title="Alfabeto Ascendente" data-searchType="web" (click)="sortUserList(2, '')">A</li>
+                                <li *ngIf="alphabeticSort" class="letter-down-filter" title="Alfabeto Descendete" data-searchType="web" (click)="sortUserList(3, '')">Z</li>
+                                <li *ngIf="orphanSort" class="orphans" title="Huerfanos" data-searchType="web" (click)="sortUserList(5, '')">H</li>
+                                <li *ngIf="!orphanSort" class="with-team" title="No Huerfanos" data-searchType="web" (click)="sortUserList(5, '')">A</li>
+                            </ul>
+                        </form>
+                    </fieldset>
+                </div>
+                <div class="searchresults">
+                    <div *ngIf="userList != null">
+
+                        <table class="styled-table" id="employees" style="box-shadow: none; border-spacing: 0px;">
+                            <tbody>
+                                <tr *ngFor="let user of displayUserList">
+                                    <td (click)="getTeam(user.email ?? ''); currentUser = user.name ?? ''" style="cursor:pointer ;text-align: start; width: 85%;" title="{{user.name}}">{{user.name}}</td>
+                                    <span class="circle{{user.Status}}"></span>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    
+                </div>
+            </div>
+
+            <div class="messageTeam" *ngIf="userTeam?.length == 0">
+                <h1 class="boldTextMessageTeam">El equipo de {{currentUser}} no tiene usuarios.</h1>
+            </div>
+            
+            <div class="messageTeam" *ngIf="userTeam == null && userTeamNotApproved == null">
+                <h1 class="boldTextMessageTeam">Seleccione un equipo para empezar</h1>
+            </div>
+
+            <div class="display" *ngIf="userTeam?.length ?? 0 > 0">
+                <table class="styled-table">
+                    <caption title="{{currentUser}}">Equipo 360 de {{currentUser}}</caption>
+                    <thead>
+                        <tr class="styled-rows">
+                            <th>ID</th>
+                            <th>Nombre</th>
+                            <th>Evaluación</th>
+                            <th>Horas</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                      <ng-container *ngFor="let user of userTeam">
+                        <tr *ngIf="(user.Approved == null || user.Approved == true) && user.warning == 3" class="styled-rows">
+                          <th>{{user.PartnerID}}</th> 
+                          <th>{{user.Partner}}</th>  
+                          <th *ngIf="user.EvalType == 0">Peer</th>
+                          <th *ngIf="user.EvalType == 1">Team</th>
+                          <th *ngIf="user.EvalType == 2">Leader</th>
+                          <th>{{user.Hours}}</th>  
+                        </tr>
+                      </ng-container>
+
+
+                      <ng-container *ngFor="let user of userTeam">
+                        <tr class="styled-rows">
+                          <th>{{user.PartnerID}}</th> 
+                          <th>{{user.Partner}}</th>  
+                          <th *ngIf="user.EvalType == 0">Peer</th>
+                          <th *ngIf="user.EvalType == 1">Team</th>
+                          <th *ngIf="user.EvalType == 2">Leader</th>
+                          <th>{{user.Hours}}</th>  
+                        </tr>
+                      </ng-container>
+                </table>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

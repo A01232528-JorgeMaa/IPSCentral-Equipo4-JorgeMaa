@@ -1,0 +1,19 @@
+<main>
+  <div class="pop-up">
+      <div class="message">
+          
+
+          <div>
+              <h1>Se eliminará la base de datos.</h1>
+          </div>
+
+          <p>¿Estás seguro que quieres borrar todos los datos?</p>
+          <p>No se borrarán los superusuarios existentes</p>
+          <mat-dialog-actions class="buttons">
+              <button class="button-deny" (click)="close()">No, regresar</button>
+              <button class="button-confirm"(click)="reset()">Confirmar</button>
+          </mat-dialog-actions>
+          
+      </div>
+  </div>
+</main>

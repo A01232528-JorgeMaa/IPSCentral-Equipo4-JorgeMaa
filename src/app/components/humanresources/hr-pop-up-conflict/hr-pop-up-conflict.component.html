@@ -1,0 +1,103 @@
+<main>
+    <div class="pop-up">
+        <div class="message">
+            <div>
+                <h1 class="title">{{titleDisplay}}</h1>
+                <div style="display:flex; flex-direction: row; justify-content: center; align-items: center;">
+                  <figure>
+                    <img *ngIf="!conflictStatus" src="http://localhost:4200/assets/icons/removeIconHr.png" alt="icono agregar usuario" style="width: auto; height: 30px; margin: 5px;">
+                    <img *ngIf="conflictStatus" src="http://localhost:4200/assets/icons/confirmButton.png" alt="icono agregar usuario" style="width: auto; height: 30px; margin: 5px;">
+                  </figure>
+                  <p>Status: {{statusDisplay}}</p>
+                </div>
+                
+                <div class="tableRequest" *ngIf="displayTable">
+                    <table class="rh-table">
+                        <tr>
+                            <th style="width: 5%;">ID</th>
+                            <th style="width: 35%; text-align: left;">Nombre</th>
+                            <th style="width: 10%;">Evaluación</th>
+                            <th style="width: 50%; text-align: left;">Motivo</th>
+                        </tr>
+                        <ng-container *ngFor="let individualConflict of conflict">
+                          <tr *ngIf="individualConflict.RequestType == 0">
+                            <th style="width: 5%;">{{individualConflict.OwnerID}}</th>
+                            <th style="width: 15%; text-align: left;">{{individualConflict.OwnerName}}</th>
+                            <th style="width: 10%;" *ngIf="individualConflict.EvalType == 0">Peer</th>
+                            <th style="width: 10%;" *ngIf="individualConflict.EvalType == 1">Team</th>
+                            <th style="width: 10%;" *ngIf="individualConflict.EvalType == 2">Leader</th>
+                            <th style="width: 70%; text-align: left;">{{individualConflict.Reason}}</th>
+                        </tr>
+                        </ng-container>
+                        
+                    </table>
+                </div>
+                <div class="tableRequest">
+                  <table class="rh-table">
+                    <tr>
+                      <th style="width: 30%; text-align: left;">Para</th>
+                      <th style="width: 70%; text-align: center;">Motivo de decisión</th>
+                    </tr>
+                    <ng-container *ngFor="let individualConflict of conflict">
+                      <tr>
+                        <th style="width: 30%; text-align: left;">{{individualConflict.OwnerName}}</th>
+                        <th>
+                          <textarea style="padding: 2%; width: 90%; text-align: left;" class="enabledTextbox" placeholder="Motivo" (keyup)="checkMessage()" [(ngModel)]="individualConflict.HrResponse"></textarea>
+                        </th>
+                      </tr>
+                    </ng-container>
+                    
+                  </table>
+                </div>
+            </div>
+            <div>
+
+            </div>
+            <mat-dialog-actions *ngIf="!saveResponse" class="buttons">
+                <button class="button-return" (click)="save()">Regresar</button>
+            </mat-dialog-actions>
+
+            <mat-dialog-actions *ngIf="saveResponse" class="buttons">
+              <button class="button-confirm" (click)="save()">Guardar</button>
+          </mat-dialog-actions>
+            
+        </div>
+    </div>
+</main>
+
+
+
+<!-- <main *ngIf="conflictType == 1">
+  <div class="pop-up">
+      <div class="message">
+          <div>
+            <p>Detalles</p>
+              <div class="tableRequest">
+                <table class="rh-table">
+                  <tr>
+                    <th>Para</th>
+                    <th>Motivo de decision</th>
+                  </tr>
+                  <ng-container *ngFor="let individualConflict of conflict">
+                    <tr *ngIf="individualConflict.RequestType == 1">
+                      <th>{{individualConflict.OwnerName}}</th>
+                      <th>
+                        <textarea style="padding: 2%;" class="enabledTextbox" placeholder="Motivo" (keyup)="checkMessage()" [(ngModel)]="individualConflict.HrResponse"></textarea>
+                      </th>
+                    </tr>
+                  </ng-container>
+                  
+                </table>
+              </div>
+          </div>
+          <mat-dialog-actions *ngIf="!saveResponse" class="buttons">
+              <button class="button-return" (click)="save()">Regresar</button>
+          </mat-dialog-actions>
+
+          <mat-dialog-actions *ngIf="saveResponse" class="buttons">
+            <button class="button-confirm" (click)="save()">Guardar</button>
+        </mat-dialog-actions>
+          
+      </div>
+  </div>
+</main> -->

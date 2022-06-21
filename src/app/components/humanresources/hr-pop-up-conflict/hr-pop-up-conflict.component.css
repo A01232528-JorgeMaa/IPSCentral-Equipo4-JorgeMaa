@@ -1,0 +1,136 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  
+}
+
+main {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.pop-up {
+    width: 60%;
+    border: 1px solid #d7d7d7;
+    border-radius: 5px;
+    background: white;
+    padding: 24px;
+    position: absolute;
+    overflow-y: scroll; height: 90%;
+
+}
+
+.pop-up .message {
+    width: 80%;
+    height: fit-content;
+    margin: auto;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+.pop-up .message p{
+    font-size: 1.5rem;
+    color: #282c38;
+    text-decoration: none;
+    text-align: center;
+}
+
+.pop-up .message .buttons {
+    width: 50%;
+    display: flex;
+    margin: auto;
+    justify-content: space-around;
+    align-items: center;
+    margin-top: 24px;
+}
+
+.pop-up .message .buttons button {
+    width: 60%;
+    height: 40px;
+    
+    font-weight: bold;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: all 0.2s ease-in-out;
+}
+
+.button-return{
+    background-color: #6b6b6b;
+    color: #d7d7d7;
+}
+
+.button-confirm{
+  background-color: #00bc13;
+  color: #d7d7d7;
+}
+
+
+.pop-up .message .buttons button:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 4px 17px rgba(0, 0, 0, 0.35);
+}
+
+
+.rh-table {
+    width: 100%;
+    
+    overflow: auto;
+    border: 1px solid #dfe5eb;
+    border-collapse: collapse;
+    margin-bottom: 2.4rem;
+    color: black;
+
+}
+
+.rh-table tr:nth-child(1) {
+    background-color: #eff2f7;
+}
+
+.rh-table tr:nth-child(even){
+    background-color: #f9fafc;
+}
+
+.rh-table tr th{
+    padding: 1.5rem;
+    text-align: center;
+    border-bottom: 1px solid #dfe5eb;
+}
+
+.rh-table tr td{
+    padding: 1.5rem;
+    text-align: left;
+    border-bottom: 1px solid #dfe5eb;
+}
+
+.rh-table tr td:nth-child(4){
+    padding: 1.5rem;
+    text-align: center;
+    border-bottom: 1px solid #dfe5eb;
+}
+
+.tableRequest{
+    overflow-y: scroll;
+}
+
+.title{
+    color: black;
+    font-weight: bolder;
+    text-align: center;
+    font-size: 2.5rem;
+}
+
+.enabledTextbox{
+  border: 2px solid lightsalmon;
+  border-radius: 4px;
+  height: 50px;
+  resize: none;
+  box-sizing: border-box;
+  width: 100%;
+  font-size: 12px;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: bolder;
+}

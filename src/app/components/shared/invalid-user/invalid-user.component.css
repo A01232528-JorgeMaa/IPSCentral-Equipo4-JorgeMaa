@@ -1,0 +1,41 @@
+#error {
+  background: #222;
+  text-align: center;
+  margin-bottom: 50px;
+  font-weight: 400;
+  font-size: 20px;
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  line-height: 1.5em;
+  z-index: 9999;
+  left: 0px;
+}
+
+#error-text {
+  top: 30%;
+  position: relative;
+  font-size: 40px;
+}
+
+#error-text p {
+  color: #eee;
+  margin: 70px 0 0 0;
+}
+
+#error-text span {
+  position: relative;
+  background: #ef4824;
+  color: #fff;
+  font-size: 300%;
+  padding: 0 20px;
+  border-radius: 7px;
+  font-weight: bolder;
+  margin: 0 0 40px 0;
+}
+
+@media only screen and (max-width:640px) {
+  #error-text span {
+    font-size: 200%;
+  }
+}

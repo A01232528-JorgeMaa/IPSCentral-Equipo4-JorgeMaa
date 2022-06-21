@@ -1,0 +1,229 @@
+
+<div class="sidenav" [ngClass]="collapsed ? 'sidenav-collapsed': ''">
+  <div class="logo-container">
+      <!-- <button class="logo" (click)="toggleCollapse()">IPS</button> -->
+      <button class="logo-icon" (click)="toggleCollapse()"><i class='bx bx-menu'></i></button>
+      <div class="logo-text" @fadeInOut *ngIf="collapsed">IPS Central</div>
+      <button class="btn-close" @rotate *ngIf="collapsed" (click)="closeSidenav()">
+          <i class='bx bx-x'></i>
+      </button>
+  </div>
+  <div class="image-details" @fadeInOut *ngIf="collapsed">
+      <img src="{{imageSrc}}" alt="{{imageAlt}}" />
+  </div>
+  <ul class="sidenav-nav">
+      <li class="sidenav-nav-item" *ngFor="let data of navData">
+          <a class="sidenav-nav-link" [routerLink]="[data.routeLink]"
+              routerLinkActive="active"
+              [routerLinkActiveOptions]="{exact: true}">
+              <i class="sidenav-link-icon" [class]="data.icon"></i>
+              <span class="sidenav-link-text" @fadeInOut *ngIf="collapsed">
+                  {{data.label}}
+              </span>
+          </a>
+      </li>
+  </ul>
+  <div class="logo-contain">
+      <button class="logo-icon" (click)="toggleCollapse()"><i class='bx bx-user' ></i></button>
+      <div class="logo-text" @fadeInOut *ngIf="collapsed">{{profile.givenName}}
+          <div class="logo-description">Superusuario</div>
+      </div>
+      <button (click)="logout()" class="btn-close" @fadeInOut *ngIf="collapsed">
+          <i class='bx bx-log-out'></i>
+      </button>
+  </div>
+</div>
+
+<app-body [collapsed]="isSideNavCollapsed"
+[screenWidth]="screenWidth"></app-body>
+
+<!-- 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <link href='https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css' rel='stylesheet'>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Apricot Sidebar</title>
+</head>
+<body>
+    <div class="sidebar">
+
+        <div class="image-details">
+            <img src="{{imageSrc}}" alt="{{imageAlt}}" />
+        </div>
+
+        <ul class="nav-links">
+            <li>
+                <a routerLink="/superuser/dashboard">
+                    <i class='bx bx-grid-alt'></i>
+                    <span class="link_name">Dashboard</span>
+                </a>
+                <ul class="sub-menu blank">
+                    <li><a class="link_name" routerLink="/superuser/dashboard">Dashboard</a></li>
+                </ul>
+            </li>
+            <li>
+                <div class="icon-link" clickOutside (clickOutside)="clickedOutside()" (click)="toggleMenu()">
+                    <a>
+                        <i class='bx bx-user'></i>
+                        <span class="link_name">Equipos</span>
+                    </a>
+                    <i class="bx bxs-chevron-down arrow"></i>
+                </div>
+                <ul class="sub-menu" *ngIf="isMenuOpened">
+                    <li><a>Crear Equipo</a></li>
+                    <li><a routerLink="/superuser/visualize-teams">Visualizar Equipos</a></li>
+                </ul>
+            </li>
+            <li>
+                <a routerLink="/superuser/manage-users">
+                    <i class='bx bx-folder'></i>
+                    <span class="link_name">Administrar Usuarios</span>
+                </a>
+                <ul class="sub-menu blank">
+                    <li><a class="link_name" routerLink="/superuser/manage-users">Administrar Usuarios</a></li>
+                </ul>
+            </li>
+            <li>
+                <a routerLink="/superuser/load-file">
+                    <i class='bx bx-folder'></i>
+                    <span class="link_name">Cargar archivo</span>
+                </a>
+                <ul class="sub-menu blank">
+                    <li><a class="link_name" routerLink="/superuser/load-file">Carga de archivo</a></li>
+                </ul>
+            </li>
+            <li>
+                <a routerLink="/superuser/confirm-load">
+                    <i class='bx bx-cog'></i>
+                    <span class="link_name">Publicar Equpos</span>
+                </a>
+                <ul class="sub-menu blank">
+                    <li><a class="link_name" routerLink="/superuser/confirm-load">Publicar Equipos</a></li>
+                </ul>
+            </li>
+            <li>
+                <div class="profile-details">
+                    <div class="profile-content">
+                        <img src="http://localhost:4200/assets/stock.jpeg" alt="profile">
+                    </div>
+                        <div class="name-job">
+                            <div class="profile_name">{{profile?.givenName}}</div>
+                            <div class="job">Superusuario</div>
+                        </div>
+                        <i class='bx bx-log-out' id="log_out" (click)="logout()"></i>
+                </div>
+            </li>
+        </ul>
+    </div>
+    <section class="home-section">
+        <router-outlet></router-outlet>
+    </section>
+</body>
+</html> -->
+
+<!-- <!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <link rel="stylesheet" href="./sidebar-superuser.component.css"> -->
+    <!-- Boxicons CDN Link -->
+    <!-- <link href='https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css' rel='stylesheet'>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Apricot Sidebar</title>
+</head> -->
+
+<!-- <body>
+    <div class="sidebar">
+        <div class="logo-details">
+            <i class='bx bxl-windows'></i>
+            <span class="logo_name">Inflection Point</span>
+        </div>
+        <ul class="nav-links">
+            <li>
+                <a routerLink="/superuser/dashboard">
+                    <i class='bx bx-grid-alt'></i>
+                    <span class="link_name">Dashboard</span>
+                </a>
+                <ul class="sub-menu blank">
+                    <li><a class="link_name">Dashboard</a></li>
+                </ul>
+            </li>
+            <li>
+                <a routerLink="/superuser/visualize-teams">
+                    <i class='bx bx-grid-alt'></i>
+                    <span class="link_name">Ver Equipos</span>
+                </a>
+                <ul class="sub-menu blank">
+                    <li><a class="link_name">Ver Equipos</a></li>
+                </ul>
+            </li>
+            <li>
+                <a routerLink="/superuser/manage-users">
+                    <i class='bx bx-folder'></i>
+                    <span class="link_name">Administrar Usuarios</span>
+                </a>
+                <ul class="sub-menu blank">
+                    <li><a class="link_name">Administrar Usuarios</a></li>
+                </ul>
+            </li>
+            <li>
+                <a routerLink="/superuser/load-file">
+                    <i class='bx bx-folder'></i>
+                    <span class="link_name">Cargar Información</span>
+                </a>
+                <ul class="sub-menu blank">
+                    <li><a class="link_name" href="#">Cargar Información</a></li>
+                </ul>
+            </li>
+            <li>
+                <a routerLink="/superuser/confirm-load">
+                    <i class='bx bx-folder'></i>
+                    <span class="link_name">File Manager</span>
+                </a>
+                <ul class="sub-menu blank">
+                    <li><a class="link_name" href="#">Files</a></li>
+                </ul>
+            </li>
+            <li>
+                <div class="profile-details">
+                    <div class="profile-content">
+                        <img src="http://localhost:4200/assets/stock.jpeg" alt="">
+                    </div>
+                    <div class="name-job">
+                        <div class="profile_name">{{profile?.givenName}}</div>
+                        <div class="job">Recursos Humanos</div>
+                    </div>
+                    <i class='bx bx-log-out' id="log_out" (click)="logout()"></i>
+                </div>
+            </li>
+        </ul>
+    </div>
+    <section class="home-section">
+        <router-outlet></router-outlet>
+    </section>
+    <script>
+        let arrow = document.querySelectorAll(".arrow");
+        for (var i = 0; i < arrow.length; i++) {
+            arrow[i].addEventListener("click", (e) => {
+                let arrowParent = e.target.parentElement.parentElement;
+                console.log(arrowParent);
+                arrowParent.classList.toggle("showMenu");
+            });
+        }
+
+        let sidebar = document.querySelector(".sidebar");
+        let sidebarBtn = document.querySelector(".bx-menu");
+        console.log(sidebarBtn)
+        sidebarBtn.addEventListener("click", () => {
+            sidebar.classList.toggle("close");
+        });
+    </script>
+
+</body>
+
+</html> -->
